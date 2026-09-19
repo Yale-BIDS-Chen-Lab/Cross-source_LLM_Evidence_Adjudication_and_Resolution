@@ -1,4 +1,4 @@
-"""Prompts for the online-search deep research method."""
+"""Prompts for CLEAR dynamic evidence search and answer generation."""
 
 from __future__ import annotations
 
@@ -8,8 +8,8 @@ from typing import Any, Dict, List
 from methods.common.prompt import format_options
 
 
-SEARCH_PROMPT_VERSION = "ace_mr_search_v1"
-ANSWER_PROMPT_VERSION = "ace_mr_answer_v1"
+SEARCH_PROMPT_VERSION = "clear_search_v1"
+ANSWER_PROMPT_VERSION = "clear_answer_v1"
 
 
 def build_search_messages(sample: Dict[str, Any], *, max_sources: int) -> List[Dict[str, str]]:

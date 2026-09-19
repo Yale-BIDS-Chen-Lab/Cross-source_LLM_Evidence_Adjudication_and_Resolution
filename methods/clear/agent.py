@@ -1,4 +1,4 @@
-"""Online evidence search for the deep research method."""
+"""Dynamic evidence search for CLEAR."""
 
 from __future__ import annotations
 
@@ -11,8 +11,8 @@ import urllib.request
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 
-from methods.ace_mr.prompts import build_search_messages, dumps_for_cache, evidence_cache_payload
-from methods.ace_mr.structured import normalize_evidence, parse_json_object
+from methods.clear.prompts import build_search_messages, dumps_for_cache, evidence_cache_payload
+from methods.clear.structured import normalize_evidence, parse_json_object
 
 
 def _extract_annotations(message: Any) -> List[Dict[str, Any]]:

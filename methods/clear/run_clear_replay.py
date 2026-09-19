@@ -27,7 +27,7 @@ from methods.common.data import (
     sample_is_correct,
 )
 from methods.common.io import make_run_dir, write_json, write_jsonl
-from methods.ace_mr.verifier import run_verifier
+from methods.clear.verifier import run_verifier
 
 
 def load_result_objects(path: Path) -> List[Dict[str, Any]]:
@@ -84,7 +84,7 @@ def run(args: argparse.Namespace) -> None:
 
     run_dir = Path(args.run_dir).resolve() if args.run_dir else make_run_dir(
         output_root,
-        method="ace_mr_replay",
+        method="clear_replay",
         dataset=dataset,
         split=split,
         model=args.model,
@@ -185,7 +185,7 @@ def run(args: argparse.Namespace) -> None:
             "evidence": online_evidence,
             "verifier": verifier,
             "trace": {
-                "method": "ace_mr_replay",
+                "method": "clear_replay",
                 "model": args.model,
                 "retriever": "direct+bm25+online_search",
                 "verifier_mode": args.verifier_mode,
@@ -225,7 +225,7 @@ def run(args: argparse.Namespace) -> None:
     online_challenge_applied = sum(1 for row in results if (row.get("verifier") or {}).get("online_challenge_applied"))
     summary = build_summary(
         results,
-        method="ace_mr_replay",
+        method="clear_replay",
         dataset=dataset,
         split=split,
         model=args.model,
@@ -284,7 +284,7 @@ def build_arg_parser() -> argparse.ArgumentParser:
     parser.add_argument("--second-search-max-retries", type=int, default=1)
     parser.add_argument(
         "--second-search-cache-dir",
-        default=str(PROJECT_ROOT / "temp" / "ace_mr_second_search_cache"),
+        default=str(PROJECT_ROOT / "temp" / "clear_second_search_cache"),
     )
     parser.add_argument("--reuse-second-search-cache", action="store_true")
     parser.add_argument("--second-search-quality-threshold", type=float, default=0.8)

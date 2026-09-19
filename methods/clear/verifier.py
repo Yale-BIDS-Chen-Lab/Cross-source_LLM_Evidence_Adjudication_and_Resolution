@@ -10,10 +10,10 @@ from typing import Any, Dict, List, Optional, Sequence
 from methods.common.llm import call_chat_model
 from methods.common.prompt import format_options, format_retrieved_docs
 from methods.common.parser import parse_answer
-from methods.ace_mr.prompts import format_evidence
-from methods.ace_mr.source_quality import format_source_quality_report, summarize_source_quality
-from methods.ace_mr.structured import parse_json_object
-from methods.ace_mr.targeted_search import allow_second_search_override, run_targeted_second_search
+from methods.clear.prompts import format_evidence
+from methods.clear.source_quality import format_source_quality_report, summarize_source_quality
+from methods.clear.structured import parse_json_object
+from methods.clear.targeted_search import allow_second_search_override, run_targeted_second_search
 
 
 VALID_DECISIONS = {
@@ -462,7 +462,7 @@ def _apply_post_verifier_guards(
                     max_sources=second_search_max_sources,
                     search_context_size=second_search_context_size,
                     cache_dir=second_search_cache_dir
-                    or Path("temp/ace_mr_second_search_cache").resolve(),
+                    or Path("temp/clear_second_search_cache").resolve(),
                     reuse_cache=reuse_second_search_cache,
                     sleep_s=second_search_sleep_s,
                     adjudicator_provider=provider,
@@ -644,7 +644,7 @@ def _apply_online_challenge_audit(
             max_retries=second_search_max_retries,
             max_sources=second_search_max_sources,
             search_context_size=second_search_context_size,
-            cache_dir=second_search_cache_dir or Path("temp/ace_mr_second_search_cache").resolve(),
+            cache_dir=second_search_cache_dir or Path("temp/clear_second_search_cache").resolve(),
             reuse_cache=reuse_second_search_cache,
             sleep_s=second_search_sleep_s,
             adjudicator_provider=adjudicator_provider,

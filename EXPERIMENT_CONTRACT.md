@@ -7,7 +7,7 @@ This repository contains CLEAR and three baselines:
 | `direct` | Answer from the question and options only. |
 | `bm25` | Retrieve local BM25 evidence, then answer. |
 | `medcpt` | Retrieve local MedCPT evidence, then answer. |
-| `ace_mr` | Run CLEAR (legacy method identifier retained for compatibility). |
+| `clear` | Run CLEAR across parametric, local, and dynamic evidence sources. |
 
 ## Input Schema
 

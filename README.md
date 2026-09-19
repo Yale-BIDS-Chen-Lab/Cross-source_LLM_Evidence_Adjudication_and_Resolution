@@ -14,7 +14,7 @@ search evidence, and verifier-based answer selection.
 | `methods/direct/` | Direct answering baseline |
 | `methods/BM25/` | BM25 retrieval baseline |
 | `methods/MedCPT/` | MedCPT retrieval baseline |
-| `methods/ace_mr/` | CLEAR (legacy module path retained for compatibility) |
+| `methods/clear/` | CLEAR |
 
 ## Repository Scope
 
@@ -71,7 +71,7 @@ python methods/BM25/run_bm25.py \
 CLEAR:
 
 ```bash
-python methods/ace_mr/run_ace_mr.py \
+python methods/clear/run_clear.py \
   --data-path data/MCQ/medqa/test.jsonl \
   --dataset medqa \
   --split test_full \

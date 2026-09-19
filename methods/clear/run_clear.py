@@ -37,10 +37,10 @@ from methods.common.io import make_run_dir, write_json, write_jsonl
 from methods.common.llm import call_chat_model
 from methods.common.parser import parse_answer
 from methods.common.prompt import build_direct_prompt, build_retrieval_prompt
-from methods.ace_mr.agent import search_evidence
-from methods.ace_mr.prompts import ANSWER_PROMPT_VERSION, SEARCH_PROMPT_VERSION, build_answer_messages
-from methods.ace_mr.structured import evidence_has_content
-from methods.ace_mr.verifier import run_verifier
+from methods.clear.agent import search_evidence
+from methods.clear.prompts import ANSWER_PROMPT_VERSION, SEARCH_PROMPT_VERSION, build_answer_messages
+from methods.clear.structured import evidence_has_content
+from methods.clear.verifier import run_verifier
 
 
 def _empty_candidate(error: str = "") -> Dict[str, Any]:
@@ -190,7 +190,7 @@ def run(args: argparse.Namespace) -> None:
     ]
     retriever = BM25Retriever(db_dir=args.db_dir, corpora=corpora)
 
-    run_dir = make_run_dir(output_root, method="ace_mr", dataset=dataset, split=split, model=args.model)
+    run_dir = make_run_dir(output_root, method="clear", dataset=dataset, split=split, model=args.model)
     results_path = run_dir / "results.jsonl"
     summary_path = run_dir / "summary.json"
     config_path = run_dir / "config.json"
@@ -265,7 +265,7 @@ def run(args: argparse.Namespace) -> None:
             "evidence": evidence,
             "verifier": verifier,
             "trace": {
-                "method": "ace_mr",
+                "method": "clear",
                 "model": args.model,
                 "verifier_model": verifier_model,
                 "retriever": "direct+bm25+online_search",
@@ -306,7 +306,7 @@ def run(args: argparse.Namespace) -> None:
     online_challenge_applied = sum(1 for row in results if (row.get("verifier") or {}).get("online_challenge_applied"))
     summary = build_summary(
         results,
-        method="ace_mr",
+        method="clear",
         dataset=dataset,
         split=split,
         model=args.model,
@@ -370,7 +370,7 @@ def build_arg_parser() -> argparse.ArgumentParser:
     parser.add_argument("--search-context-size", choices=["low", "medium", "high"], default="medium")
     parser.add_argument("--max-sources", type=int, default=6)
     parser.add_argument("--max-search-retries", type=int, default=2)
-    parser.add_argument("--cache-dir", default=str(PROJECT_ROOT / "temp" / "ace_mr_search_cache"))
+    parser.add_argument("--cache-dir", default=str(PROJECT_ROOT / "temp" / "clear_search_cache"))
     parser.add_argument("--reuse-search-cache", action="store_true")
     parser.add_argument("--verifier-provider", choices=["auto", "azure", "openai", "qwen"], default="auto")
     parser.add_argument("--verifier-model", default="", help="Verifier model/deployment; defaults to --model.")
@@ -389,7 +389,7 @@ def build_arg_parser() -> argparse.ArgumentParser:
     parser.add_argument("--second-search-context-size", choices=["low", "medium", "high"], default="medium")
     parser.add_argument("--second-search-max-sources", type=int, default=6)
     parser.add_argument("--second-search-max-retries", type=int, default=1)
-    parser.add_argument("--second-search-cache-dir", default=str(PROJECT_ROOT / "temp" / "ace_mr_second_search_cache"))
+    parser.add_argument("--second-search-cache-dir", default=str(PROJECT_ROOT / "temp" / "clear_second_search_cache"))
     parser.add_argument("--reuse-second-search-cache", action="store_true")
     parser.add_argument("--second-search-quality-threshold", type=float, default=0.8)
     parser.add_argument("--enable-online-challenge-audit", action="store_true")

@@ -19,18 +19,18 @@ if str(PROJECT_ROOT) not in sys.path:
 
 from methods.common.io import make_run_dir, write_json
 from methods.common.llm import call_chat_model
-from methods.ace_mr.agent import _call_chat_search, _resolve_search_provider
-from methods.ace_mr.prompts import format_evidence
-from methods.ace_mr.source_quality import summarize_source_quality
-from methods.ace_mr.structured import normalize_evidence, parse_json_object
+from methods.clear.agent import _call_chat_search, _resolve_search_provider
+from methods.clear.prompts import format_evidence
+from methods.clear.source_quality import summarize_source_quality
+from methods.clear.structured import normalize_evidence, parse_json_object
 
 from methods.common.benchmarks import healthbench as hb
 from methods.common.benchmarks import medrbench as mrb
 
 
-SEARCH_PROMPT_VERSION = "free_text_ace_mr_search_v1"
-ONLINE_ANSWER_PROMPT_VERSION = "free_text_ace_mr_online_answer_v1"
-REVIEWER_PROMPT_VERSION = "free_text_ace_mr_reviewer_v1"
+SEARCH_PROMPT_VERSION = "free_text_clear_search_v1"
+ONLINE_ANSWER_PROMPT_VERSION = "free_text_clear_online_answer_v1"
+REVIEWER_PROMPT_VERSION = "free_text_clear_reviewer_v1"
 
 
 def _resolve_path(path: str | Path) -> Path:
@@ -363,7 +363,7 @@ def _run_medrbench_task(
             "online_raw_response": online_raw,
             "evidence": evidence,
             "trace": {
-                "method": "ace_mr_free_text",
+                "method": "clear_free_text",
                 "task": task,
                 "model": args.model,
                 "judge_model": args.judge_model,
@@ -389,7 +389,7 @@ def _run_medrbench_task(
 
     summary = _summarize_free_text_results(
         results,
-        method="ace_mr_free_text",
+        method="clear_free_text",
         dataset=f"medrbench_{task}",
         split="test",
         model=args.model,
@@ -404,7 +404,7 @@ def run_medrbench(args: argparse.Namespace) -> None:
     output_root = _resolve_path(args.output_root)
     run_dir = _resolve_path(args.run_dir) if args.run_dir else make_run_dir(
         output_root,
-        method="ace_mr_free_text",
+        method="clear_free_text",
         dataset="medrbench",
         split=args.task,
         model=args.model,
@@ -443,7 +443,7 @@ def run_medrbench(args: argparse.Namespace) -> None:
     correct = sum(int(item.get("correct", 0)) for item in task_summaries.values())
     failed = sum(int(item.get("failed_samples", 0)) for item in task_summaries.values())
     summary = {
-        "method": "ace_mr_free_text",
+        "method": "clear_free_text",
         "dataset": "medrbench",
         "split": args.task,
         "num_samples": n,
@@ -465,7 +465,7 @@ def run_healthbench(args: argparse.Namespace) -> None:
     output_root = _resolve_path(args.output_root)
     run_dir = _resolve_path(args.run_dir) if args.run_dir else make_run_dir(
         output_root,
-        method="ace_mr_free_text",
+        method="clear_free_text",
         dataset="healthbench",
         split=subset,
         model=args.model,
@@ -575,7 +575,7 @@ def run_healthbench(args: argparse.Namespace) -> None:
             "online_raw_response": online_raw,
             "evidence": evidence,
             "trace": {
-                "method": "ace_mr_free_text",
+                "method": "clear_free_text",
                 "model": args.model,
                 "judge_model": args.judge_model,
                 "prompt_versions": {
@@ -598,7 +598,7 @@ def run_healthbench(args: argparse.Namespace) -> None:
 
     summary = _summarize_free_text_results(
         results,
-        method="ace_mr_free_text",
+        method="clear_free_text",
         dataset="healthbench",
         split=subset,
         model=args.model,
@@ -639,7 +639,7 @@ def build_arg_parser() -> argparse.ArgumentParser:
     parser.add_argument("--search-context-size", choices=["low", "medium", "high"], default="medium")
     parser.add_argument("--max-sources", type=int, default=6)
     parser.add_argument("--max-search-retries", type=int, default=1)
-    parser.add_argument("--cache-dir", default=str(PROJECT_ROOT / "temp" / "free_text_ace_mr_cache"))
+    parser.add_argument("--cache-dir", default=str(PROJECT_ROOT / "temp" / "free_text_clear_cache"))
     parser.add_argument("--reuse-cache", action="store_true")
     parser.add_argument("--sleep-s", type=float, default=0.0)
     return parser

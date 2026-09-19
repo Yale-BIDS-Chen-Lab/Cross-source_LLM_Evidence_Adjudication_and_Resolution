@@ -14,13 +14,13 @@ from typing import Any, Dict, List, Optional, Tuple
 
 from methods.common.llm import call_chat_model
 from methods.common.prompt import format_options
-from methods.ace_mr.agent import _call_chat_search, _resolve_search_provider
-from methods.ace_mr.prompts import dumps_for_cache
-from methods.ace_mr.source_quality import summarize_source_quality
-from methods.ace_mr.structured import parse_json_object
+from methods.clear.agent import _call_chat_search, _resolve_search_provider
+from methods.clear.prompts import dumps_for_cache
+from methods.clear.source_quality import summarize_source_quality
+from methods.clear.structured import parse_json_object
 
 
-SECOND_SEARCH_PROMPT_VERSION = "ace_mr_second_search_v2_patch_split_judge"
+SECOND_SEARCH_PROMPT_VERSION = "clear_second_search_v2_patch_split_judge"
 VALID_SUPPORT_SCOPE = {"exact_option", "background_only", "related_task", "unclear"}
 
 

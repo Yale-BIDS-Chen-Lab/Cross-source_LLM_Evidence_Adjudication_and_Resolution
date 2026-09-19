@@ -16,8 +16,8 @@ if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
 from evaluation.summary import build_summary
-from methods.ace_mr.source_quality import summarize_source_quality
-from methods.ace_mr.structured import normalize_evidence
+from methods.clear.source_quality import summarize_source_quality
+from methods.clear.structured import normalize_evidence
 from methods.common.data import load_jsonl, normalize_sample, sample_is_correct
 
 
