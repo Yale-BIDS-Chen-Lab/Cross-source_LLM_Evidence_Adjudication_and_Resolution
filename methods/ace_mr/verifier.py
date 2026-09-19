@@ -1,4 +1,4 @@
-"""Reviewer/verifier module for ACE-MR V2."""
+"""Reviewer/verifier module for CLEAR."""
 
 from __future__ import annotations
 

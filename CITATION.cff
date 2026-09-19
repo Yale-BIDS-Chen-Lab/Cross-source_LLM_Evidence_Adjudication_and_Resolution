@@ -1,0 +1,26 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the accompanying paper using the preferred citation below."
+title: "CLEAR: Cross-Source Evidence Adjudication for Large Language Models in Medicine"
+type: software
+authors:
+  - family-names: Wang
+    given-names: Shuai
+  - family-names: Zhao
+    given-names: Yize
+  - family-names: Chen
+    given-names: Qingyu
+repository-code: "https://github.com/Yale-BIDS-Chen-Lab/Cross-source_LLM_Evidence_Adjudication_and_Resolution"
+url: "https://arxiv.org/abs/2609.16301v1"
+preferred-citation:
+  type: article
+  authors:
+    - family-names: Wang
+      given-names: Shuai
+    - family-names: Zhao
+      given-names: Yize
+    - family-names: Chen
+      given-names: Qingyu
+  title: "CLEAR: Cross-Source Evidence Adjudication for Large Language Models in Medicine"
+  year: 2026
+  doi: "10.48550/arXiv.2609.16301"
+  url: "https://arxiv.org/abs/2609.16301v1"

@@ -1,4 +1,4 @@
-"""Deterministic source quality scoring for ACE-MR V2."""
+"""Deterministic source quality scoring for CLEAR."""
 
 from __future__ import annotations
 

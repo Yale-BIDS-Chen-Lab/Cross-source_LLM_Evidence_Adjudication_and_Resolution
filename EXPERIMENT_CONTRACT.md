@@ -1,13 +1,13 @@
 # Experiment Contract
 
-This repository contains ACE-MR and three baselines:
+This repository contains CLEAR and three baselines:
 
 | Method | Purpose |
 |---|---|
 | `direct` | Answer from the question and options only. |
 | `bm25` | Retrieve local BM25 evidence, then answer. |
 | `medcpt` | Retrieve local MedCPT evidence, then answer. |
-| `ace_mr` | Combine parametric, local retrieval, and online evidence. |
+| `ace_mr` | Run CLEAR (legacy method identifier retained for compatibility). |
 
 ## Input Schema
 
@@ -61,7 +61,7 @@ Each result row includes:
 }
 ```
 
-ACE-MR rows also include candidate predictions, online evidence, source quality
+CLEAR rows also include candidate predictions, online evidence, source quality
 fields, and verifier output.
 
 ## Metrics

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""ACE-MR V2: Direct + BM25 + online evidence + verifier."""
+"""CLEAR: Direct + BM25 + online evidence + verifier."""
 
 from __future__ import annotations
 
@@ -344,7 +344,7 @@ def run(args: argparse.Namespace) -> None:
 
 
 def build_arg_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(description="Run the ACE-MR medical QA pipeline.")
+    parser = argparse.ArgumentParser(description="Run the CLEAR medical QA pipeline.")
     parser.add_argument("--data-path", required=True)
     parser.add_argument("--dataset", default="")
     parser.add_argument("--split", default="")

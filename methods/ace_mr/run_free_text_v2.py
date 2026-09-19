@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""ACE-MR V2-style runner for free-text MedRBench and HealthBench."""
+"""CLEAR runner for free-text MedRBench and HealthBench."""
 
 from __future__ import annotations
 

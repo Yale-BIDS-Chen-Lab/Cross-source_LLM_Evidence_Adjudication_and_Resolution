@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Offline smoke test for ACE-MR.
+"""Offline smoke test for CLEAR.
 
 The test avoids model APIs, online search, and retrieval indexes.
 """

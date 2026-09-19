@@ -1,9 +1,10 @@
-# Agentic Adjudication for Medical Reasoning
+# CLEAR: Cross-Source Evidence Adjudication for Large Language Models in Medicine
 
-This repository provides the implementation for "Agentic Adjudication for
-Cross-Source Evidence Management in Medical Reasoning".
+This repository provides the implementation for
+["CLEAR: Cross-Source Evidence Adjudication for Large Language Models in
+Medicine"](https://arxiv.org/abs/2609.16301v1).
 
-ACE-MR combines parametric model answers, local retrieval evidence, online
+CLEAR combines parametric model answers, local retrieval evidence, online
 search evidence, and verifier-based answer selection.
 
 ## Included Methods
@@ -13,7 +14,7 @@ search evidence, and verifier-based answer selection.
 | `methods/direct/` | Direct answering baseline |
 | `methods/BM25/` | BM25 retrieval baseline |
 | `methods/MedCPT/` | MedCPT retrieval baseline |
-| `methods/ace_mr/` | ACE-MR |
+| `methods/ace_mr/` | CLEAR (legacy module path retained for compatibility) |
 
 ## Repository Scope
 
@@ -67,7 +68,7 @@ python methods/BM25/run_bm25.py \
   --db-dir /path/to/local/medrag_corpora
 ```
 
-ACE-MR:
+CLEAR:
 
 ```bash
 python methods/ace_mr/run_ace_mr.py \
@@ -93,3 +94,27 @@ These outputs are ignored by git.
 
 Retrieval baselines require a local corpus/index. Benchmark data and retrieval
 corpora should be obtained from their original sources.
+
+## Citation
+
+If you use this repository, please cite the accompanying paper:
+
+```bibtex
+@misc{wang2026clear,
+  title         = {CLEAR: Cross-Source Evidence Adjudication for Large Language Models in Medicine},
+  author        = {Wang, Shuai and Zhao, Yize and Chen, Qingyu},
+  year          = {2026},
+  eprint        = {2609.16301},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.AI},
+  doi           = {10.48550/arXiv.2609.16301},
+  url           = {https://arxiv.org/abs/2609.16301}
+}
+```
+
+Machine-readable citation metadata are also available in [`CITATION.cff`](CITATION.cff).
+
+## Acknowledgements
+
+This study is supported by the National Institutes of Health National Library
+of Medicine under Award Number R01LM014604.

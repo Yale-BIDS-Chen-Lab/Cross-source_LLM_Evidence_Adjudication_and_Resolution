@@ -1,4 +1,4 @@
-"""Targeted second-search checks for disputed ACE-MR V2 Patch answers.
+"""Targeted second-search checks for disputed CLEAR answers.
 
 In this patch, the search model only gathers source-backed evidence. The
 current verifier model (o3/Qwen) performs the adjudication over that evidence.

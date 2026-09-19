@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Replay ACE-MR V2 verification over existing Direct/BM25/online runs."""
+"""Replay CLEAR verification over existing Direct/BM25/online runs."""
 
 from __future__ import annotations
 
@@ -256,7 +256,7 @@ def run(args: argparse.Namespace) -> None:
 
 
 def build_arg_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(description="Replay the ACE-MR verifier over existing candidate runs.")
+    parser = argparse.ArgumentParser(description="Replay the CLEAR verifier over existing candidate runs.")
     parser.add_argument("--data-path", required=True)
     parser.add_argument("--direct-results", required=True)
     parser.add_argument("--bm25-results", required=True)
